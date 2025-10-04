@@ -85,19 +85,19 @@ export const mainStats: MainStats = {
 // Datasets de NASA disponibles
 export const nasaDatasets: NASADataset[] = [
   {
-    name: 'Kepler Exoplanet Search Results',
+    name: 'Kepler Objects of Interest (KOI)',
     description: 'Datos de la misión Kepler con más de 2,600 exoplanetas confirmados',
     link: 'https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=cumulative',
     updated: '2024'
   },
   {
     name: 'K2 Planets and Candidates',
-    description: 'Dataset de la misión K2 con candidatos a exoplanetas',
-    link: 'https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=k2candidates',
+    description: 'Dataset de la misión K2 con exoplanetas candidatos y confirmados',
+    link: 'https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=k2pandc',
     updated: '2024'
   },
   {
-    name: 'TESS Exoplanet Candidates',
+    name: 'TESS Objects of Interest (TOI)',
     description: 'Datos recientes del Transiting Exoplanet Survey Satellite',
     link: 'https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=TOI',
     updated: '2024'

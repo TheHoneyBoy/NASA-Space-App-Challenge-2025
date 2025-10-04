@@ -31,7 +31,7 @@ interface CTASectionProps {
   secondaryButtonText?: string;
   /** Callback al hacer click en crear cuenta */
   onCreateAccount?: () => void;
-  /** Callback al hacer click en ver planes */
+  /** Callback al hacer click en ver demo */
   onViewPlans?: () => void;
 }
 
@@ -44,7 +44,7 @@ const CTASection: React.FC<CTASectionProps> = ({
   title = '¿Listo para Explorar el Universo?',
   description = 'Crea tu cuenta gratuita y accede a herramientas avanzadas de predicción, entrena tus propios modelos de IA y únete a la comunidad de exploradores espaciales',
   primaryButtonText = 'Crear Cuenta Gratis',
-  secondaryButtonText = 'Ver Planes',
+  secondaryButtonText = 'Ver Demo',
   onCreateAccount,
   onViewPlans,
 }) => {

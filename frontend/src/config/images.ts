@@ -2,6 +2,10 @@
 // CONFIGURACIÓN DE IMÁGENES
 // Cambia las URLs de las imágenes aquí
 // ============================================
+import predImage from '../assets/pred.png';
+import telescope from '../assets/kepler.png';
+import exoplanet from '../assets/exoplaneta.png';
+import astronaut from '../assets/astronaut.png';
 
 interface Images {
   heroBackground: string;
@@ -17,16 +21,16 @@ const IMAGES: Images = {
   heroBackground: 'https://images.unsplash.com/photo-1464802686167-b939a6910659?w=1920&q=80',
   
   // Astronauta flotante en sección de introducción
-  astronaut: 'https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=800&q=80',
+  astronaut: astronaut,
   
   // Planeta para sección "¿Qué son los exoplanetas?"
-  exoplanet: 'https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=800&q=80',
+  exoplanet: exoplanet,
   
   // Cerebro/IA para sección "Cómo funciona"
-  aiConcept: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80',
+  aiConcept: predImage, // ahora funciona
   
   // Telescopio/satélite para sección de datasets
-  telescope: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800&q=80',
+  telescope: telescope,
   
   // Sistema solar para visualización
   solarSystem: 'https://images.unsplash.com/photo-1614732414444-096e5f1122d5?w=800&q=80',
