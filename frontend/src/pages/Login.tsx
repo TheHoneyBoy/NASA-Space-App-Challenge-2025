@@ -1,43 +1,54 @@
-import React, { useState } from 'react';
-import { Box, Button, TextField, Typography, Container } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { loginUser } from '../services/authService';
+import type { LoginData } from '../services/authService';
 
-const Login: React.FC = () => {
-  const navigate = useNavigate();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+const Login = () => {
+  const [formData, setFormData] = useState<LoginData>({ email: '', password: '' });
+  const [error, setError] = useState<string | null>(null);
 
-  const handleLogin = () => {
-    // Lógica de login simulada
-    if (username && password) {
-      navigate('/dashboard');
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const res = await loginUser(formData);
+      console.log('Inicio de sesión exitoso:', res);
+      // aquí podrías guardar el token en localStorage
+      // localStorage.setItem('token', res.token);
+    } catch (err) {
+      console.error('Error en login:', err);
+      setError('Credenciales incorrectas');
     }
   };
 
   return (
-    <Container maxWidth="sm" sx={{ mt: 10 }}>
-      <Typography variant="h4" gutterBottom textAlign="center">
-        Login
-      </Typography>
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-        <TextField
-          label="Usuario"
-          variant="outlined"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+    <div className="p-8 max-w-sm mx-auto">
+      <h2 className="text-xl font-bold mb-4">Iniciar Sesión</h2>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+        <input
+          type="text"
+          name="email"
+          placeholder="Usuario"
+          value={formData.email}
+          onChange={handleChange}
+          className="border p-2 rounded"
         />
-        <TextField
-          label="Contraseña"
+        <input
           type="password"
-          variant="outlined"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          name="password"
+          placeholder="Contraseña"
+          value={formData.password}
+          onChange={handleChange}
+          className="border p-2 rounded"
         />
-        <Button variant="contained" color="primary" onClick={handleLogin}>
-          Ingresar
-        </Button>
-      </Box>
-    </Container>
+        <button type="submit" className="bg-blue-600 text-white rounded p-2">
+          Iniciar Sesión
+        </button>
+        {error && <p className="text-red-600 text-sm">{error}</p>}
+      </form>
+    </div>
   );
 };
 
