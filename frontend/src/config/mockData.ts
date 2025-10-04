@@ -79,7 +79,7 @@ export const missionData: MissionDataPoint[] = [
 export const mainStats: MainStats = {
   exoplanets: 5539,
   predictions: 12847,
-  accuracy: 94.7,
+  accuracy: 85,
 };
 
 // Datasets de NASA disponibles
