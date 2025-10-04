@@ -41,10 +41,10 @@ interface CTASectionProps {
 // ============================================
 
 const CTASection: React.FC<CTASectionProps> = ({
-  title = '¿Listo para Explorar el Universo?',
-  description = 'Crea tu cuenta gratuita y accede a herramientas avanzadas de predicción, entrena tus propios modelos de IA y únete a la comunidad de exploradores espaciales',
-  primaryButtonText = 'Crear Cuenta Gratis',
-  secondaryButtonText = 'Ver Demo',
+  title = 'Ready to Explore the Universe?',
+  description = 'Create your free account and access advanced prediction tools, train your own AI models, and join the community of space explorers.',
+  primaryButtonText = 'Create Free Account',
+  secondaryButtonText = 'View Demo',
   onCreateAccount,
   onViewPlans,
 }) => {

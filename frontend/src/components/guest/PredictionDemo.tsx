@@ -32,12 +32,12 @@ interface PredictionDemoProps {
 // SECCIÓN: DEMO DE PREDICCIÓN
 // Edita: campos del formulario, resultados
 // ============================================
-
 const PredictionDemo: React.FC<PredictionDemoProps> = ({
-  title = 'Predicción Rápida de Exoplanetas',
-  subtitle = 'Ingresa algunos datos básicos y observa cómo nuestra IA predice la probabilidad de un exoplaneta',
-  overline = 'Prueba Nuestra IA',
+  title = 'Quick Exoplanet Prediction',
+  subtitle = 'Enter some basic data and see how our AI predicts the probability of an exoplanet',
+  overline = 'Try Our AI',
 }) => {
+
   const [formData, setFormData] = useState<FormData>({
     orbitalPeriod: '',
     planetRadius: '',
@@ -47,34 +47,35 @@ const PredictionDemo: React.FC<PredictionDemoProps> = ({
 
   const [result, setResult] = useState<PredictionResult>({
     probability: 87.3,
-    classification: 'EXOPLANETA PROBABLE',
-    type: 'Súper-Tierra',
+    classification: 'PROBABLE EXOPLANET',
+    type: 'Super-Earth',
     zone: 'Habitable',
-    confidence: 'Alta',
+    confidence: 'High',
   });
+
 
   // Maneja cambios en los inputs
   const handleChange = (field: keyof FormData) => (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [field]: e.target.value });
   };
 
-  // Simula la predicción - EDITA la lógica aquí
+  // Simulate prediction - EDIT logic here
   const handlePredict = () => {
-    // Simulación simple basada en los valores
-    const randomProb = Math.random() * 40 + 60; // Entre 60% y 100%
+    // Simple simulation based on values
+    const randomProb = Math.random() * 40 + 60; // Between 60% and 100%
     setResult({
       probability: parseFloat(randomProb.toFixed(1)),
-      classification: randomProb > 75 ? 'EXOPLANETA PROBABLE' : 'EXOPLANETA POSIBLE',
-      type: randomProb > 80 ? 'Súper-Tierra' : 'Júpiter Caliente',
-      zone: randomProb > 70 ? 'Habitable' : 'No Habitable',
-      confidence: randomProb > 85 ? 'Alta' : 'Media',
+      classification: randomProb > 75 ? 'PROBABLE EXOPLANET' : 'POSSIBLE EXOPLANET',
+      type: randomProb > 80 ? 'Super-Earth' : 'Hot Jupiter',
+      zone: randomProb > 70 ? 'Habitable' : 'Non-Habitable',
+      confidence: randomProb > 85 ? 'High' : 'Medium',
     });
   };
 
   return (
     <Container maxWidth="lg" sx={{ py: 12 }}>
       <Box sx={{ textAlign: 'center', mb: 8 }}>
-        {/* Overline - EDITA mediante props */}
+        {/* Overline - EDIT via props */}
         <Typography
           variant="overline"
           sx={{ color: 'primary.main', fontWeight: 600, letterSpacing: 2 }}
@@ -82,12 +83,12 @@ const PredictionDemo: React.FC<PredictionDemoProps> = ({
           {overline}
         </Typography>
 
-        {/* Título - EDITA mediante props */}
+        {/* Title - EDIT via props */}
         <Typography variant="h2" sx={{ mt: 2, mb: 2 }}>
           {title}
         </Typography>
 
-        {/* Subtítulo - EDITA mediante props */}
+        {/* Subtitle - EDIT via props */}
         <Typography 
           variant="body1" 
           sx={{ color: 'text.secondary', maxWidth: '700px', mx: 'auto', fontSize: '1.1rem' }}
@@ -96,50 +97,59 @@ const PredictionDemo: React.FC<PredictionDemoProps> = ({
         </Typography>
       </Box>
 
+
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+    >
+
+
       <Grid container spacing={6} alignItems="center">
-        {/* Formulario de predicción */}
+        {/* Prediction Form */}
         <Grid size={{ xs: 12, md: 6 }}>
 
           <Card sx={{ p: 4 }}>
             <Typography variant="h5" sx={{ mb: 3 }}>
-              Datos de Entrada
+              Input Data
             </Typography>
             
-            {/* Campos del formulario - EDITA labels y helpers aquí */}
+            {/* Form fields - EDIT labels and helpers here */}
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
               <TextField
-                label="Período Orbital (días)"
+                label="Orbital Period (days)"
                 type="number"
                 fullWidth
-                placeholder="Ej: 365.25"
-                helperText="Tiempo que tarda el planeta en orbitar su estrella"
+                placeholder="Ex: 365.25"
+                helperText="Time it takes for the planet to orbit its star"
                 value={formData.orbitalPeriod}
                 onChange={handleChange('orbitalPeriod')}
               />
               <TextField
-                label="Radio del Planeta (radios terrestres)"
+                label="Planet Radius (Earth radii)"
                 type="number"
                 fullWidth
-                placeholder="Ej: 1.2"
-                helperText="Tamaño del planeta comparado con la Tierra"
+                placeholder="Ex: 1.2"
+                helperText="Planet size compared to Earth"
                 value={formData.planetRadius}
                 onChange={handleChange('planetRadius')}
               />
               <TextField
-                label="Temperatura Estelar (K)"
+                label="Stellar Temperature (K)"
                 type="number"
                 fullWidth
-                placeholder="Ej: 5778"
-                helperText="Temperatura de la estrella anfitriona"
+                placeholder="Ex: 5778"
+                helperText="Temperature of the host star"
                 value={formData.stellarTemp}
                 onChange={handleChange('stellarTemp')}
               />
               <TextField
-                label="Profundidad del Tránsito (%)"
+                label="Transit Depth (%)"
                 type="number"
                 fullWidth
-                placeholder="Ej: 0.01"
-                helperText="Disminución de brillo durante el tránsito"
+                placeholder="Ex: 0.01"
+                helperText="Brightness drop during transit"
                 value={formData.transitDepth}
                 onChange={handleChange('transitDepth')}
               />
@@ -160,13 +170,13 @@ const PredictionDemo: React.FC<PredictionDemoProps> = ({
                   },
                 }}
               >
-                Calcular Predicción
+                Calculate Prediction
               </Button>
             </Box>
           </Card>
         </Grid>
 
-        {/* Resultado de la predicción */}
+        {/* Prediction Result */}
         <Grid size={{ xs: 12, md: 6 }}>
 
           <Card
@@ -177,10 +187,10 @@ const PredictionDemo: React.FC<PredictionDemoProps> = ({
             }}
           >
             <Typography variant="h5" sx={{ mb: 3 }}>
-              Resultado de la Predicción
+              Prediction Result
             </Typography>
 
-            {/* Indicador de probabilidad - EDITA estilos aquí */}
+            {/* Probability Indicator - EDIT styles here */}
             <Box sx={{ textAlign: 'center', mb: 4 }}>
               <Box
                 sx={{
@@ -201,7 +211,7 @@ const PredictionDemo: React.FC<PredictionDemoProps> = ({
                     {result.probability}%
                   </Typography>
                   <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                    Probabilidad
+                    Probability
                   </Typography>
                 </Box>
               </Box>
@@ -218,15 +228,15 @@ const PredictionDemo: React.FC<PredictionDemoProps> = ({
               />
             </Box>
 
-            {/* Características predichas - EDITA valores aquí */}
+            {/* Predicted Features - EDIT values here */}
             <Box sx={{ mt: 4 }}>
               <Typography variant="h6" sx={{ mb: 2 }}>
-                Características Predichas:
+                Predicted Features:
               </Typography>
               {[
-                { label: 'Tipo', value: result.type },
-                { label: 'Zona', value: result.zone },
-                { label: 'Confianza', value: result.confidence },
+                { label: 'Type', value: result.type },
+                { label: 'Zone', value: result.zone },
+                { label: 'Confidence', value: result.confidence },
               ].map((item, idx) => (
                 <Box
                   key={idx}
@@ -249,7 +259,7 @@ const PredictionDemo: React.FC<PredictionDemoProps> = ({
               ))}
             </Box>
 
-            {/* Nota informativa - EDITA texto aquí */}
+            {/* Informational Note - EDIT text here */}
             <Box
               sx={{
                 mt: 3,
@@ -260,13 +270,17 @@ const PredictionDemo: React.FC<PredictionDemoProps> = ({
               }}
             >
               <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.9rem' }}>
-                ℹ️ Esta es una predicción de demostración. Para resultados más precisos y 
-                entrenar tus propios modelos, crea una cuenta gratuita.
+                ℹ️ This is a demo prediction. For more accurate results and to train your own models,
+                create a free account.
               </Typography>
             </Box>
+
+
           </Card>
         </Grid>
       </Grid>
+
+    </motion.div>
     </Container>
   );
 };

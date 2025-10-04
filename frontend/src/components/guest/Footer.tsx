@@ -53,17 +53,17 @@ interface FooterProps {
 // FOOTER
 // Edita: enlaces, información de contacto
 // ============================================
-
 const Footer: React.FC<FooterProps> = ({
   brandName = 'HAWA HP',
-  brandDescription = 'Más allá del cielo. Explorando el universo de los exoplanetas con inteligencia artificial.',
+  brandDescription = 'Beyond the sky. Exploring the universe of exoplanets with artificial intelligence.',
   copyrightYear = new Date().getFullYear(),
-  copyrightText = 'Todos los derechos reservados. | Datos proporcionados por NASA Exoplanet Archive',
+  copyrightText = 'All rights reserved. | Data provided by NASA Exoplanet Archive',
   socialLinks = [],
   links = footerLinks,
   onNewsletterSubmit,
   showNewsletter = true,
 }) => {
+
   // Estado para el email del newsletter
   const [email, setEmail] = useState<string>('');
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
@@ -206,7 +206,7 @@ const Footer: React.FC<FooterProps> = ({
           {/* Nueva columna - AGREGA ESTO */}
           <Grid size={{ xs: 6, md: 2 }}>
             <Typography variant="h6" sx={{ mb: 2, fontSize: '1rem' }}>
-              Acerca de
+              About
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
               <Link
@@ -219,7 +219,7 @@ const Footer: React.FC<FooterProps> = ({
                   '&:hover': { color: 'primary.main' },
                 }}
               >
-                Conoce al Equipo
+                Meet the Team
               </Link>
               
             </Box>
@@ -273,7 +273,7 @@ const Footer: React.FC<FooterProps> = ({
               component="h3"
               sx={{ mb: 2, fontSize: '1rem', fontWeight: 600 }}
             >
-              Recursos
+              Resources
             </Typography>
             <Box 
               component="nav"
@@ -322,7 +322,7 @@ const Footer: React.FC<FooterProps> = ({
                   lineHeight: 1.6,
                 }}
               >
-                Recibe las últimas noticias sobre exoplanetas y actualizaciones de la plataforma
+                Get the latest news on exoplanets and platform updates
               </Typography>
               
               {/* Formulario de newsletter */}
@@ -334,7 +334,7 @@ const Footer: React.FC<FooterProps> = ({
                 <TextField
                   type="email"
                   size="small"
-                  placeholder="tu@email.com"
+                  placeholder="you@email.com"
                   value={email}
                   onChange={handleEmailChange}
                   required
@@ -362,7 +362,7 @@ const Footer: React.FC<FooterProps> = ({
                     },
                   }}
                 >
-                  {isSubmitting ? 'Enviando...' : 'Enviar'}
+                  {isSubmitting ? 'Sending...' : 'Send'}
                 </Button>
               </Box>
             </Grid>

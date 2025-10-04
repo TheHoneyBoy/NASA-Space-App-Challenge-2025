@@ -86,19 +86,19 @@ export const mainStats: MainStats = {
 export const nasaDatasets: NASADataset[] = [
   {
     name: 'Kepler Objects of Interest (KOI)',
-    description: 'Datos de la misión Kepler con más de 2,600 exoplanetas confirmados',
+    description: 'Data from the Kepler mission with over 2,600 confirmed exoplanets',
     link: 'https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=cumulative',
     updated: '2024'
   },
   {
     name: 'K2 Planets and Candidates',
-    description: 'Dataset de la misión K2 con exoplanetas candidatos y confirmados',
+    description: 'Dataset from the K2 mission with candidate and confirmed exoplanets',
     link: 'https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=k2pandc',
     updated: '2024'
   },
   {
     name: 'TESS Objects of Interest (TOI)',
-    description: 'Datos recientes del Transiting Exoplanet Survey Satellite',
+    description: 'Recent data from the Transiting Exoplanet Survey Satellite',
     link: 'https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=TOI',
     updated: '2024'
   },
@@ -106,69 +106,68 @@ export const nasaDatasets: NASADataset[] = [
 
 // Features destacados de la plataforma
 export const platformFeatures: PlatformFeature[] = [
-  { id: 1, text: 'IA Avanzada' },
-  { id: 2, text: 'Datos Reales NASA' },
-  { id: 3, text: 'Exploración Interactiva' },
+  { id: 1, text: 'Advanced AI' },
+  { id: 2, text: 'Real NASA Data' },
+  { id: 3, text: 'Interactive Exploration' },
 ];
 
 // Información educativa sobre exoplanetas
 export const exoplanetInfo: ExoplanetInfo[] = [
   {
-    title: 'Zona Habitable',
-    desc: 'Región donde puede existir agua líquida en la superficie'
+    title: 'Habitable Zone',
+    desc: 'Region where liquid water can exist on the surface'
   },
   {
-    title: 'Métodos de Detección',
-    desc: 'Tránsito, velocidad radial, imagen directa y microlentes'
+    title: 'Detection Methods',
+    desc: 'Transit, radial velocity, direct imaging, and microlensing'
   },
   {
-    title: 'Tipos de Exoplanetas',
-    desc: 'Gigantes gaseosos, súper-Tierras, Neptunos calientes y más'
+    title: 'Types of Exoplanets',
+    desc: 'Gas giants, super-Earths, hot Neptunes, and more'
   },
 ];
-
-// Proceso de predicción (4 pasos)
+// Prediction Process (4 steps)
 export const predictionSteps: PredictionStep[] = [
   {
     step: '01',
-    title: 'Recolección de Datos',
-    desc: 'Obtenemos datos de curvas de luz, tránsitos planetarios y características estelares de bases de datos oficiales'
+    title: 'Data Collection',
+    desc: 'We gather light curve, planetary transit, and stellar feature data from official databases.'
   },
   {
     step: '02',
-    title: 'Procesamiento con IA',
-    desc: 'Nuestros modelos de ML analizan patrones complejos en los datos para identificar señales de exoplanetas'
+    title: 'AI Processing',
+    desc: 'Our ML models analyze complex patterns in the data to identify exoplanet signals.'
   },
   {
     step: '03',
-    title: 'Análisis Probabilístico',
-    desc: 'Calculamos la probabilidad de que una señal corresponda a un exoplaneta verdadero vs. un falso positivo'
+    title: 'Probabilistic Analysis',
+    desc: 'We calculate the probability that a signal corresponds to a real exoplanet versus a false positive.'
   },
   {
     step: '04',
-    title: 'Resultados Precisos',
-    desc: 'Obtenemos predicciones con alta precisión (>94%) validadas contra datos confirmados'
+    title: 'Accurate Results',
+    desc: 'We obtain highly accurate predictions (>94%) validated against confirmed data.'
   },
 ];
 
-// Datos de visualización
+// Visualization Data
 export const visualizationStats: VisualizationStat[] = [
-  { label: 'Sistemas Estelares', value: '4,123' },
-  { label: 'Zona Habitable', value: '342' },
-  { label: 'Candidatos Activos', value: '2,889' },
-  { label: 'Confirmados 2024', value: '245' },
+  { label: 'Stellar Systems', value: '4,123' },
+  { label: 'Habitable Zone', value: '342' },
+  { label: 'Active Candidates', value: '2,889' },
+  { label: 'Confirmed 2024', value: '245' },
 ];
 
-// Beneficios de crear cuenta
+// Account Benefits
 export const accountBenefits: AccountBenefit[] = [
-  { text: 'Entrena modelos personalizados' },
-  { text: 'Sube tus propios datasets' },
-  { text: 'Guarda y comparte resultados' },
-  { text: 'Acceso a Fine Tuning' },
+  { text: 'Train custom models' },
+  { text: 'Upload your own datasets' },
+  { text: 'Save and share results' },
+  { text: 'Access to Fine Tuning' },
 ];
 
-// Enlaces del footer
+// Footer Links
 export const footerLinks: FooterLinks = {
-  platform: ['Explorar', 'Predicción', 'Entrenamiento', 'Datasets'],
-  resources: ['Documentación', 'API', 'Tutoriales', 'Blog'],
+  platform: ['Explore', 'Prediction', 'Training', 'Datasets'],
+  resources: ['Documentation', 'API', 'Tutorials', 'Blog'],
 };

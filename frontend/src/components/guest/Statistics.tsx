@@ -21,12 +21,13 @@ interface StatCardConfig {
   icon: React.ReactNode;
   color: string;
 }
-
+/*
 interface ChartDataPoint {
   year?: number;
   count: number;
   mission?: string;
 }
+*/
 
 interface StatisticsProps {
   title?: string;
@@ -37,11 +38,11 @@ interface StatisticsProps {
 // SECCIÓN: ESTADÍSTICAS DINÁMICAS
 // Edita: números, gráficos en mockData.ts
 // ============================================
-
 const Statistics: React.FC<StatisticsProps> = ({
-  title = 'Estadísticas del Universo',
-  overline = 'Datos en Tiempo Real',
+  title = 'Universe Statistics',
+  overline = 'Real-Time Data',
 }) => {
+
   const [stats, setStats] = useState<Stats>({
     exoplanets: 0,
     predictions: 0,
@@ -56,23 +57,23 @@ const Statistics: React.FC<StatisticsProps> = ({
     return () => clearTimeout(timer);
   }, []);
 
-  // Configuración de las cards principales - EDITA aquí
+  // Main cards configuration - EDIT HERE
   const statsConfig: StatCardConfig[] = [
     {
       value: stats.exoplanets.toLocaleString(),
-      label: 'Exoplanetas Confirmados',
+      label: 'Confirmed Exoplanets',
       icon: <Globe size={40} />,
       color: '#6366f1'
     },
     {
       value: stats.predictions.toLocaleString(),
-      label: 'Predicciones Realizadas',
+      label: 'Predictions Made',
       icon: <Brain size={40} />,
       color: '#8b5cf6'
     },
     {
       value: `${stats.accuracy}%`,
-      label: 'Precisión del Modelo',
+      label: 'Model Accuracy',
       icon: <TrendingUp size={40} />,
       color: '#06b6d4'
     },
@@ -144,14 +145,13 @@ const Statistics: React.FC<StatisticsProps> = ({
             </Grid>
           ))}
         </Grid>
-
-        {/* Gráficos - EDITA datos en mockData.ts */}
+        {/* Charts - EDIT data in mockData.ts */}
         <Grid container spacing={4}>
-          {/* Gráfico de descubrimientos por año */}
+          {/* Discoveries by Year Chart */}
           <Grid size={{ xs: 12, md: 6 }}>
             <Card sx={{ p: 3 }}>
               <Typography variant="h6" sx={{ mb: 3 }}>
-                Descubrimientos por Año
+                Discoveries by Year
               </Typography>
               <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={discoveryData}>
@@ -177,12 +177,11 @@ const Statistics: React.FC<StatisticsProps> = ({
             </Card>
           </Grid>
 
-          {/* Gráfico de descubrimientos por misión */}
+          {/* Discoveries by Mission Chart */}
           <Grid size={{ xs: 12, md: 6 }}>
-
             <Card sx={{ p: 3 }}>
               <Typography variant="h6" sx={{ mb: 3 }}>
-                Descubrimientos por Misión
+                Discoveries by Mission
               </Typography>
               <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={missionData}>
@@ -206,5 +205,6 @@ const Statistics: React.FC<StatisticsProps> = ({
     </Box>
   );
 };
+
 
 export default Statistics;

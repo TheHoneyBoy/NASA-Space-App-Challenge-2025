@@ -17,7 +17,7 @@ const TeamHero: React.FC = () => {
     <Box
       sx={{
         position: 'relative',
-        minHeight: '80vh',
+        minHeight: '100vh',
         width: '100vw',
         display: 'flex',
         alignItems: 'center',
@@ -79,7 +79,7 @@ const TeamHero: React.FC = () => {
               },
             }}
           >
-            Atrás
+            Back
           </Button>
         </motion.div>
 
