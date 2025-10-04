@@ -202,9 +202,33 @@ const Footer: React.FC<FooterProps> = ({
             </Box>
           </Grid>
 
-          {/* Columna 2: Enlaces de plataforma - EDITA EN mockData.ts */}
+          
+          {/* Nueva columna - AGREGA ESTO */}
           <Grid size={{ xs: 6, md: 2 }}>
+            <Typography variant="h6" sx={{ mb: 2, fontSize: '1rem' }}>
+              Acerca de
+            </Typography>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+              <Link
+                href="/team"
+                sx={{
+                  color: 'text.secondary',
+                  textDecoration: 'none',
+                  fontSize: '0.9rem',
+                  transition: 'color 0.3s',
+                  '&:hover': { color: 'primary.main' },
+                }}
+              >
+                Conoce al Equipo
+              </Link>
+              
+            </Box>
+          </Grid>
 
+        {
+          /* Columna 2: Enlaces de plataforma - EDITA EN mockData.ts
+          
+          <Grid size={{ xs: 6, md: 2 }}>
             <Typography 
               variant="h6" 
               component="h3"
@@ -237,6 +261,9 @@ const Footer: React.FC<FooterProps> = ({
               ))}
             </Box>
           </Grid>
+          */
+        }
+
 
           {/* Columna 3: Enlaces de recursos - EDITA EN mockData.ts */}
           <Grid size={{ xs: 6, md: 2 }}>

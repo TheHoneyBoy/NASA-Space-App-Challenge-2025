@@ -28,7 +28,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   subtitle = 'Descubre mundos más allá de nuestro sistema solar usando el poder de la inteligencia artificial',
   badgeText = 'HAWA HP - Más allá del cielo',
   primaryButtonText = 'Empezar Exploración',
-  secondaryButtonText = 'Ver Demo',
+  secondaryButtonText = 'Visualización Interactiva',
   onPrimaryClick,
   onSecondaryClick,
 }) => {

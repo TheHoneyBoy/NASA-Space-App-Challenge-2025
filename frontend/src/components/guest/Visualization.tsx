@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+
 import { Container, Grid, Typography, Box, Card, Button } from '@mui/material';
 import { motion } from 'framer-motion';
 import { Telescope, Sparkles } from 'lucide-react';
@@ -34,10 +36,14 @@ const Visualization: React.FC<VisualizationProps> = ({
   stats = visualizationStats,
   onExploreClick,
 }) => {
+  const [showIframe, setShowIframe] = useState(false);
+  const handleExploreClick = () => {
+    setShowIframe(true);
+  };
+
   return (
     <Container maxWidth="lg" sx={{ py: 12 }}>
       <Box sx={{ textAlign: 'center', mb: 8 }}>
-        {/* Overline - EDITA mediante props */}
         <Typography
           variant="overline"
           sx={{ color: 'primary.main', fontWeight: 600, letterSpacing: 2 }}
@@ -45,12 +51,10 @@ const Visualization: React.FC<VisualizationProps> = ({
           {overline}
         </Typography>
 
-        {/* Título - EDITA mediante props */}
         <Typography variant="h2" sx={{ mt: 2, mb: 2 }}>
           {title}
         </Typography>
 
-        {/* Subtítulo - EDITA mediante props */}
         <Typography 
           variant="body1" 
           sx={{ color: 'text.secondary', maxWidth: '700px', mx: 'auto', fontSize: '1.1rem' }}
@@ -59,7 +63,6 @@ const Visualization: React.FC<VisualizationProps> = ({
         </Typography>
       </Box>
 
-      {/* Visualización simulada del mapa estelar */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -71,7 +74,6 @@ const Visualization: React.FC<VisualizationProps> = ({
             p: 4,
             position: 'relative',
             minHeight: 400,
-            // EDITA: imagen de fondo aquí
             background: `linear-gradient(145deg, rgba(10, 10, 15, 0.9) 0%, rgba(26, 26, 46, 0.9) 100%), url(${IMAGES.solarSystem})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
@@ -81,7 +83,6 @@ const Visualization: React.FC<VisualizationProps> = ({
             overflow: 'hidden',
           }}
         >
-          {/* Efecto de partículas/estrellas - EDITA cantidad en Array(20) */}
           {[...Array(20)].map((_, i: number) => (
             <Box
               key={i}
@@ -103,38 +104,45 @@ const Visualization: React.FC<VisualizationProps> = ({
             />
           ))}
 
-          {/* Placeholder para visualización interactiva - EDITA textos aquí */}
-          <Box sx={{ textAlign: 'center', zIndex: 1 }}>
-            <Telescope size={64} color="#6366f1" style={{ marginBottom: 16 }} />
-            <Typography variant="h5" sx={{ mb: 2 }}>
-              Visualización Interactiva
-            </Typography>
-            <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3 }}>
-              Aquí se mostrará un mapa 3D interactivo de los sistemas exoplanetarios
-            </Typography>
-            <Button
-              variant="contained"
-              startIcon={<Sparkles />}
-              onClick={onExploreClick}
-              sx={{
-                background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
-                transition: 'all 0.3s ease',
-                '&:hover': {
-                  transform: 'scale(1.05)',
-                },
-              }}
-            >
-              Explorar en 3D
-            </Button>
-          </Box>
+          {/* Aquí está la integración: render condicional */}
+          {!showIframe ? (
+            <Box sx={{ textAlign: 'center', zIndex: 1 }}>
+              <Telescope size={64} color="#6366f1" style={{ marginBottom: 16 }} />
+              <Typography variant="h5" sx={{ mb: 2 }}>
+                Visualización Interactiva
+              </Typography>
+              <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3 }}>
+                Aquí se mostrará un mapa 3D interactivo de los sistemas exoplanetarios
+              </Typography>
+              <Button
+                variant="contained"
+                startIcon={<Sparkles />}
+                onClick={handleExploreClick} // <- cambio aquí
+                sx={{
+                  background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+                  transition: 'all 0.3s ease',
+                  '&:hover': { transform: 'scale(1.05)' },
+                }}
+              >
+                Explorar en 3D
+              </Button>
+            </Box>
+          ) : (
+            <iframe
+              src="https://eyes.nasa.gov/apps/exo/"
+              width="100%"
+              height="600"
+              style={{ border: 'none', borderRadius: 8 }}
+              allowFullScreen
+              title="Mapa interactivo de exoplanetas NASA"
+            />
+          )}
         </Card>
       </motion.div>
 
-      {/* Datos destacados de la visualización - EDITA en mockData.ts */}
       <Grid container spacing={3} sx={{ mt: 4 }}>
         {stats.map((item: VisualizationStat, idx: number) => (
           <Grid size={{ xs: 6, md: 3 }} key={idx}>
-
             <Box
               sx={{
                 textAlign: 'center',
@@ -143,7 +151,6 @@ const Visualization: React.FC<VisualizationProps> = ({
                 bgcolor: 'rgba(99, 102, 241, 0.05)',
                 border: '1px solid rgba(99, 102, 241, 0.2)',
                 transition: 'all 0.3s ease',
-                // EDITA: efecto hover aquí
                 '&:hover': {
                   bgcolor: 'rgba(99, 102, 241, 0.1)',
                   transform: 'translateY(-4px)',
@@ -163,5 +170,6 @@ const Visualization: React.FC<VisualizationProps> = ({
     </Container>
   );
 };
+
 
 export default Visualization;
