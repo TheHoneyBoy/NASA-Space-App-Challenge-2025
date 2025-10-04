@@ -54,13 +54,13 @@ const DatasetsSection: React.FC<DatasetsSectionProps> = ({
    * Handles dataset click event
    * @param datasetName - Name of the clicked dataset
    * @param datasetLink - Dataset URL
-   */4
+   */
   
   const handleDatasetClick = (datasetName: string, datasetLink: string): void => {
     console.log(`Navigating to dataset: ${datasetName}`);
-    // EDIT HERE: Add analytics tracking if needed
-    // analytics.track('dataset_clicked', { name: datasetName, url: datasetLink });
+    void datasetLink; // evita el error de variable no usada
   };
+
   
 
   return (
