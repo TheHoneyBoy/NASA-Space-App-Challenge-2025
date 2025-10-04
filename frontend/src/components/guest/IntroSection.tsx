@@ -25,18 +25,18 @@ interface IntroSectionProps {
 // SECCIÓN DE INTRODUCCIÓN A HAWA HP
 // Edita: texto descriptivo, features
 // ============================================
-
 const IntroSection: React.FC<IntroSectionProps> = ({
-  title = 'Tu Ventana al Cosmos',
-  overline = 'Bienvenido a HAWA HP',
-  paragraph1 = 'HAWA HP es una plataforma educativa e interactiva que combina la astronomía moderna con el poder de la inteligencia artificial para democratizar el conocimiento sobre exoplanetas.',
-  paragraph2 = 'Ya seas un estudiante curioso, un educador apasionado o un entusiasta del espacio, aquí encontrarás las herramientas para explorar, aprender y predecir la existencia de mundos más allá de nuestro sistema solar.',
+  title = 'Your Window to the Cosmos',
+  overline = 'Welcome to HAWA HP',
+  paragraph1 = 'HAWA HP is an educational and interactive platform that combines modern astronomy with the power of artificial intelligence to democratize knowledge about exoplanets.',
+  paragraph2 = 'Whether you are a curious student, a passionate educator, or a space enthusiast, you will find the tools here to explore, learn, and predict the existence of worlds beyond our solar system.',
   features = [
-    { icon: <Brain size={24} />, text: 'IA Avanzada' },
-    { icon: <Database size={24} />, text: 'Datos Reales NASA' },
-    { icon: <Rocket size={24} />, text: 'Exploración Interactiva' },
+    { icon: <Brain size={24} />, text: 'Advanced AI' },
+    { icon: <Database size={24} />, text: 'Real NASA Data' },
+    { icon: <Rocket size={24} />, text: 'Interactive Exploration' },
   ],
 }) => {
+
   return (
     <Container maxWidth="lg" sx={{ py: 12 }}>
       <Grid container spacing={6} alignItems="center">
