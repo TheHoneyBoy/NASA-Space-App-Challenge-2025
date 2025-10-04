@@ -4,6 +4,8 @@ import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Dashboard from '../pages/Dashboard';
 import GuestLanding from '../pages/GuestLanding';
+import TeamPage from '../pages/TeamPage';
+
 
 const AppRoutes: React.FC = () => (
   <Routes>
@@ -13,7 +15,10 @@ const AppRoutes: React.FC = () => (
     {/* Landing del invitado - antes era /info */}
     <Route path="/info" element={<GuestLanding />} />
 
+    {/* NUEVA RUTA - Página del equipo */}
+    <Route path="/team" element={<TeamPage />} />
     {/* Rutas existentes */}
+    
     <Route path="/login" element={<Login />} />
     <Route path="/dashboard" element={<Dashboard />} />
   </Routes>
