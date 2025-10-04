@@ -1,6 +1,7 @@
 # Ignore virtual environments
 venv/
-.env/
+spaceapp/.env
+spaceapp/spaceappenv
 
 # Ignore Python cache
 __pycache__/
