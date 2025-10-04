@@ -1,11 +1,7 @@
 # spaceapp/predictions/urls.py
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
+from django.urls import path
 from .views import PredictionViewSet
 
-router = DefaultRouter()
-router.register(r'predictions', PredictionViewSet, basename='predictions')
-
 urlpatterns = [
-    path('', include(router.urls)),
+    path('api/v1/predict/', PredictionViewSet.as_view({'post': 'predict'}), name='predict'),
 ]

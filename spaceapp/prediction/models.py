@@ -4,8 +4,8 @@ from django.conf import settings
 
 class LogUserPredict(models.Model):
     datePrediction = models.DateTimeField(auto_now_add=True)
-    data = models.JSONField()  # Store input data
-    metrics = models.JSONField(null=True, blank=True)  # Store prediction metrics
+    data = models.JSONField()
+    metrics = models.JSONField(null=True, blank=True)
     result = models.CharField(max_length=45)
     idUser = models.ForeignKey(
         settings.AUTH_USER_MODEL, 
@@ -13,7 +13,7 @@ class LogUserPredict(models.Model):
         db_column='idUser'
     )
     idModel = models.ForeignKey(
-        'train.Model',  # Reference to Model in train app
+        'train.MLModel',  # Changed from 'train.Model' to 'train.MLModel'
         on_delete=models.CASCADE,
         db_column='idModel'
     )

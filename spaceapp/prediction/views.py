@@ -10,40 +10,42 @@ import numpy as np
 from datetime import datetime
 from .models import LogUserPredict
 from .serializers import PredictionSerializer, LogUserPredictSerializer
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 
+@method_decorator(csrf_exempt, name='dispatch')
 class PredictionViewSet(viewsets.ModelViewSet):
     queryset = LogUserPredict.objects.all()
     serializer_class = LogUserPredictSerializer
-    permission_classes = [IsAuthenticated]
 
-    @action(detail=False, methods=['post'], permission_classes=[IsAuthenticated])
+    @action(detail=False, methods=['post'])
     def predict(self, request):
         serializer = PredictionSerializer(data=request.data)
-        
         if not serializer.is_valid():
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
         try:
             # Step 1: Get model and data
-            model_id = serializer.validated_data['model_id']
-            csv_file = serializer.validated_data['csv_data']
-            
-            # Get the model instance from train app
-            from train.models import Model as TrainModel
+            validated_data = serializer.validated_data
+            model_id = validated_data['model_id']
+            csv_data_list = validated_data['csv_data']
+
+            print(csv_data_list.shape)          # Get the model instance from train app - UPDATED REFERENCE
+            from train.models import MLModel  # Changed from Model to MLModel
             try:
-                ml_model_instance = TrainModel.objects.get(idModel=model_id)
-            except TrainModel.DoesNotExist:
+                ml_model_instance = MLModel.objects.get(idModel=model_id)  # Changed variable name for clarity
+            except MLModel.DoesNotExist:  # Updated exception
                 return Response(
                     {"error": "Model not found"}, 
                     status=status.HTTP_404_NOT_FOUND
                 )
             
             # Step 2: Load ML model and make predictions
-            df = pd.read_csv(csv_file)
             
             # Load the trained model from filePath
             try:
-                model = joblib.load(ml_model_instance.filePath)
+                # Note: filePath is a FileField, so use .path to get the file system path
+                model = joblib.load(ml_model_instance.filePath.path)
             except Exception as e:
                 return Response(
                     {"error": f"Failed to load model: {str(e)}"}, 
@@ -51,33 +53,39 @@ class PredictionViewSet(viewsets.ModelViewSet):
                 )
             
             # Make predictions
-            predictions = model.predict(df)
+            print(csv_data_list)
+            predictions = model.predict(csv_data_list.values)  # Predicting only the first row for testing
+            print("prediction succesful xd")
+            print(predictions)
+            # # Calculate metrics
+            # metrics = self.calculate_metrics(model, df, predictions)
             
-            # Calculate metrics (example metrics - adjust based on your model type)
-            metrics = self.calculate_metrics(model, df, predictions)
+            # # Convert predictions to string result
+            # result = self.format_predictions(predictions)
             
-            # Convert predictions to string result
-            result = self.format_predictions(predictions)
+            # # Step 3: Store prediction log
+            # prediction_log = LogUserPredict.objects.create(
+            #     data=df.to_dict(orient='records'),
+            #     metrics=metrics,
+            #     result=result,
+            #     idUser=request.user,
+            #     idModel=ml_model_instance  # This should now work
+            # )
             
-            # Step 3: Store prediction log
-            prediction_log = LogUserPredict.objects.create(
-                data=df.to_dict(orient='records'),  # Convert DataFrame to JSON-serializable format
-                metrics=metrics,
-                result=result,
-                idUser=request.user,
-                idModel=ml_model_instance
-            )
+            # # Prepare response
+            # response_data = {
+            #     'prediction_id': prediction_log.id,
+            #     'predictions': predictions.tolist(),
+            #     'metrics': metrics,
+            #     'result': result
+            # }
             
-            # Prepare response
             response_data = {
-                'prediction_id': prediction_log.id,
                 'predictions': predictions.tolist(),
-                'metrics': metrics,
-                'result': result
+                'message': 'Prediction successful'  
             }
-            
+
             return Response(response_data, status=status.HTTP_200_OK)
-            
         except Exception as e:
             return Response(
                 {"error": f"Prediction failed: {str(e)}"}, 
