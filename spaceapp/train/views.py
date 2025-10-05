@@ -27,7 +27,7 @@ class MLModelList(APIView):
             # Read CSV file with pandas
             # df = pd.read_csv(file)
             train_data = train_and_select_model(path=file, target="disposition")
-            print(train_data)
+            # print(train_data)
 
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)

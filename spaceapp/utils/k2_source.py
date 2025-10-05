@@ -195,11 +195,18 @@ def train_and_select_model(path="k2_data.csv", target="disposition"):
         y_score = pipe.predict_proba(X_test)
         fpr, tpr, roc_auc = dict(), dict(), dict()
         roc_auc_data = {}
+        roc_curve_data = {}
         for i, c in enumerate(classes):
             fpr[i], tpr[i], _ = roc_curve(y_test_bin[:, i], y_score[:, i])
+            
+            roc_curve_data[f"fpr_class_{c}"] = {
+                "x": fpr[i].tolist(),
+                "y": tpr[i].tolist()
+            }
             roc_auc[i] = auc(fpr[i], tpr[i])
             roc_auc_data[f"roc_auc_class_{c}"] = roc_auc[i]
         data_response["auc"] = roc_auc_data
+        data_response["roc_curve"] = roc_curve_data
 
         """ plt.figure(figsize=(7, 6))
         for i, c in enumerate(classes):
