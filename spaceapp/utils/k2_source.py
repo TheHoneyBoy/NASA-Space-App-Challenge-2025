@@ -176,21 +176,23 @@ def train_and_select_model(path="k2_data.csv", target="disposition"):
     plt.close() """
 
     # Calculate metrics
+    classes = pipe.classes_
+
     accuracy = accuracy_score(y_test, y_pred)
-    precision = precision_score(y_test, y_pred, average='macro')
-    recall = recall_score(y_test, y_pred, average='macro')
-    f1 = f1_score(y_test, y_pred, average='macro')
+    precision = precision_score(y_test, y_pred, average=None) # average='macro')
+    recall = recall_score(y_test, y_pred, average=None) # average='macro')
+    f1 = f1_score(y_test, y_pred, average=None) # average='macro')
     
-    y_prob = pipe.predict_proba(X_test)
+    # y_prob = pipe.predict_proba(X_test)
 
     data_response["accuracy"] = accuracy
-    data_response["precision"] = precision
-    data_response["recall"] = recall
-    data_response["f1_score"] = f1
+    data_response["precision"] = dict(zip(classes, precision))
+    data_response["recall"] = dict(zip(classes, recall))
+    data_response["f1_score"] = dict(zip(classes, f1))
 
     # === Curva ROC Multiclase ===
     try:
-        classes = pipe.classes_
+        # classes = pipe.classes_
         y_test_bin = label_binarize(y_test, classes=classes)
         y_score = pipe.predict_proba(X_test)
         fpr, tpr, roc_auc = dict(), dict(), dict()
@@ -199,12 +201,12 @@ def train_and_select_model(path="k2_data.csv", target="disposition"):
         for i, c in enumerate(classes):
             fpr[i], tpr[i], _ = roc_curve(y_test_bin[:, i], y_score[:, i])
             
-            roc_curve_data[f"fpr_class_{c}"] = {
+            roc_curve_data[c] = {
                 "x": fpr[i].tolist(),
                 "y": tpr[i].tolist()
             }
             roc_auc[i] = auc(fpr[i], tpr[i])
-            roc_auc_data[f"roc_auc_class_{c}"] = roc_auc[i]
+            roc_auc_data[c] = roc_auc[i]
         data_response["auc"] = roc_auc_data
         data_response["roc_curve"] = roc_curve_data
 
