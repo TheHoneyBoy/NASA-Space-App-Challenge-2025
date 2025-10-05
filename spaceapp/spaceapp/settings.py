@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-!rheqp@q)(1n_2kv@w=&hl&s*wwdr6fwvl$dz86*_v-5ce0tkp
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['*']
 
+# CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -41,13 +43,14 @@ INSTALLED_APPS = [
     'rest_framework',
     'accounts',
     'prediction',
-    'uploaddata'
+    'uploaddata',
+    'train'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
