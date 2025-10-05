@@ -32,7 +32,7 @@ class MLModelList(APIView):
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
         
-        hello()
+        # Improve the serializer and use it to validate and save the data
         serializer = MLModelSerializer(data=request.data)
         if serializer.is_valid():
             instance = serializer.save()  # saves file to storage (MEDIA_ROOT/uploads/)
