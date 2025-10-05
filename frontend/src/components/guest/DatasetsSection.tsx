@@ -44,22 +44,24 @@ interface DatasetsSectionProps {
 // ============================================
 
 const DatasetsSection: React.FC<DatasetsSectionProps> = ({
-  title = 'Datasets Públicos de NASA',
-  subtitle = 'Accede a los mismos datos que utilizan los científicos para descubrir nuevos mundos',
-  overline = 'Datos Oficiales',
+  title = 'NASA Public Datasets',
+  subtitle = 'Access the same data scientists use to discover new worlds',
+  overline = 'Official Data',
   datasets = nasaDatasets,
   showTelescopeImage = true,
 }) => {
   /**
-   * Maneja el click en un dataset
-   * @param datasetName - Nombre del dataset clickeado
-   * @param datasetLink - URL del dataset
+   * Handles dataset click event
+   * @param datasetName - Name of the clicked dataset
+   * @param datasetLink - Dataset URL
    */
+  
   const handleDatasetClick = (datasetName: string, datasetLink: string): void => {
-    console.log(`Navegando a dataset: ${datasetName}`);
-    // EDITA AQUÍ: Añade tracking analytics si lo necesitas
-    // analytics.track('dataset_clicked', { name: datasetName, url: datasetLink });
+    console.log(`Navigating to dataset: ${datasetName}`);
+    void datasetLink; // evita el error de variable no usada
   };
+
+  
 
   return (
     <Box 
@@ -243,7 +245,7 @@ const DatasetsSection: React.FC<DatasetsSectionProps> = ({
                       },
                     }}
                   >
-                    Explorar Dataset
+                    Explore Dataset
                   </Button>
                 </Card>
               </motion.div>

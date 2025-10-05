@@ -8,44 +8,44 @@ import type { TeamMember, TeamInfo } from '../types/team.types';
 export const teamMembers: TeamMember[] = [
   {
     id: 1,
-    nombre: "Desarrollador Uno", // EDITA: Nombre completo
-    rol: "Frontend Developer", // EDITA: Rol en el proyecto
+    nombre: "Paul Andre Auccacusi Huanca", // EDITA: Nombre completo
+    rol: "Backend Developer", // EDITA: Rol en el proyecto
     foto: "/assets/team/dev1.jpg", // EDITA: Ruta de la foto (coloca tus fotos en public/assets/team/)
     
     // Información académica (FLEXIBLE)
-    titulo: "Ingeniería de Software", // EDITA: Para estudiantes: "Ingeniería de..." / Para egresados: "Ingeniero de..."
-    estado: "5to Ciclo", // EDITA: Para estudiantes: "Xto Ciclo" / Para egresados: "Egresado 2023"
+    titulo: "Ingeniería Informática y de Sistemas", // EDITA: Para estudiantes: "Ingeniería de..." / Para egresados: "Ingeniero de..."
+    estado: "Student", // EDITA: Para estudiantes: "Xto Ciclo" / Para egresados: "Egresado 2023"
     universidad: "Universidad Nacional de San Antonio Abad del Cusco", // EDITA: Nombre de la universidad
     
     // Redes sociales - EDITA con tus URLs reales
-    linkedin: "https://linkedin.com/in/usuario1",
-    github: "https://github.com/usuario1",
+    linkedin: "https://www.linkedin.com/in/paul-andre-auccacusi-huanca/",
+    github: "https://github.com/TheHoneyBoy",
     
     // Color único para este desarrollador (NO CAMBIAR a menos que quieras otro color)
     accentColor: "#6366f1" // Índigo
   },
   {
     id: 2,
-    nombre: "Desarrollador Dos", // EDITA
-    rol: "Backend Developer", // EDITA
+    nombre: "Nahyely Alaniz Espinoza Colca", // EDITA
+    rol: "UX/UI Designer & Frontend Developer", // EDITA
     foto: "/assets/team/dev2.jpg", // EDITA
-    titulo: "Ingeniero de Software", // Ejemplo de egresado
-    estado: "Egresado 2023", // Ejemplo de egresado
+    titulo: "Ingeniería informática y de Sistemas", // Ejemplo de egresado
+    estado: "Graduate", // Ejemplo de egresado
     universidad: "Universidad Nacional de San Antonio Abad del Cusco", // EDITA
-    linkedin: "https://linkedin.com/in/usuario2",
-    github: "https://github.com/usuario2",
+    linkedin: "https://www.linkedin.com/in/nahyely-espinoza-147253323",
+    github: "https://github.com/nahyely",
     accentColor: "#8b5cf6" // Púrpura
   },
   {
     id: 3,
-    nombre: "Desarrollador Tres", // EDITA
-    rol: "UI/UX Designer", // EDITA
+    nombre: "Jadyra Ch'aska Choque Quispe", // EDITA
+    rol: "Data Analyst", // EDITA
     foto: "/assets/team/dev3.jpg", // EDITA
-    titulo: "Diseño Gráfico", // EDITA
-    estado: "6to Ciclo", // EDITA
+    titulo: "Ingeniería informática y de Sistemas", // EDITA
+    estado: "Graduate", // EDITA
     universidad: "Universidad Nacional de San Antonio Abad del Cusco", // EDITA
-    linkedin: "https://linkedin.com/in/usuario3",
-    github: "https://github.com/usuario3",
+    linkedin: "https://www.linkedin.com/in/jadyra-ch-aska-choque-quispe-451858329",
+    github: "https://github.com/Dyri1",
     accentColor: "#06b6d4" // Cyan
   },
   {
@@ -63,32 +63,32 @@ export const teamMembers: TeamMember[] = [
   {
     id: 5,
     nombre: "Gian Franco Charalla Ccama", // EDITA
-    rol: "Frontend Developer", // EDITA
+    rol: "UX/UI Designer & Frontend Developer", // EDITA
     foto: "/assets/team/dev5.jpg", // EDITA
-    titulo: "Ingeniería Informática", // EDITA
-    estado: "8vo Ciclo", // EDITA
+    titulo: "Ingeniería Informática y de Sistemas", // EDITA
+    estado: "Student", // EDITA
     universidad: "Universidad Nacional de San Antonio Abad del Cusco", // EDITA
     linkedin: "https://www.linkedin.com/in/gian-franco-charalla-464b42271",
     github: "https://github.com/NXT-CRAZZY",
     accentColor: "#10b981" // Verde
   },
   {
-    id: 6,
-    nombre: "Desarrollador Seis", // EDITA
-    rol: "DevOps Engineer", // EDITA
+    id: 6,  
+    nombre: "Yasumy Maricely Jallo Paccaya", // EDITA
+    rol: "Data Scientist", // EDITA
     foto: "/assets/team/dev6.jpg", // EDITA
-    titulo: "Ingeniera de Software", // Ejemplo de egresada
-    estado: "Egresada 2024", // Ejemplo de egresada
+    titulo: "Ingeniería Informática y de Sistemas", // Ejemplo de egresada
+    estado: "Student", // Ejemplo de egresada
     universidad: "Universidad Nacional de San Antonio Abad del Cusco", // EDITA
-    linkedin: "https://linkedin.com/in/usuario6",
-    github: "https://github.com/usuario6",
+    linkedin: "https://www.linkedin.com/in/yasumy-maricely-jallo-paccaya/",
+    github: "https://github.com/yib-thv",
     accentColor: "#f59e0b" // Naranja
   },
 ];
 
 // Información general del equipo
 export const teamInfo: TeamInfo = {
-  titulo: "El Equipo Detrás de HAWA HP",
-  subtitulo: "Estudiantes y profesionales apasionados por el espacio y la tecnología",
-  descripcion: "Un equipo multidisciplinario dedicado a democratizar el conocimiento sobre exoplanetas mediante inteligencia artificial."
+  titulo: "The Team Behind HAWA HP",
+  subtitulo: "Students and professionals passionate about space and technology",
+  descripcion: "A multidisciplinary team dedicated to democratizing knowledge about exoplanets through artificial intelligence."
 };

@@ -104,7 +104,7 @@ const GuestLanding: React.FC = () => {
                   },
                 }}
               >
-                Volver a Inicio
+                Back to Home
               </Button>
             </motion.div>
           )}

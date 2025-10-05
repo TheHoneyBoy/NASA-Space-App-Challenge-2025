@@ -44,14 +44,15 @@ interface ExoplanetsInfoProps {
 // ============================================
 
 const ExoplanetsInfo: React.FC<ExoplanetsInfoProps> = ({
-  title = '¿Qué son los Exoplanetas?',
-  overline = 'Conocimiento Astronómico',
-  description = 'Los exoplanetas o planetas extrasolares son mundos que orbitan estrellas distintas a nuestro Sol. Desde el descubrimiento del primer exoplaneta confirmado en 1992, hemos encontrado más de 5,500 de estos mundos fascinantes.',
+  title = 'What Are Exoplanets?',
+  overline = 'Astronomical Knowledge',
+  description = 'Exoplanets, or extrasolar planets, are worlds that orbit stars other than our Sun. Since the discovery of the first confirmed exoplanet in 1992, we have found more than 5,500 of these fascinating worlds.',
   infoItems = exoplanetInfo,
   imageUrl = IMAGES.exoplanet,
-  imageAlt = 'Exoplaneta orbitando una estrella distante',
+  imageAlt = 'Exoplanet orbiting a distant star',
   reverseLayout = false,
 }) => {
+
   /**
    * Calcula el orden de los elementos del grid según el layout
    */

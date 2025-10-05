@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from train.models import *
-from train.serializers import *
+from train.serializer import *
 
 from train.models import *
 

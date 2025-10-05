@@ -26,13 +26,13 @@ interface HowItWorksProps {
 // SECCIÓN: CÓMO FUNCIONA LA PREDICCIÓN
 // Edita: pasos del proceso
 // ============================================
-
 const HowItWorks: React.FC<HowItWorksProps> = ({
-  title = '¿Cómo Funciona la Predicción?',
-  subtitle = 'Nuestro sistema utiliza algoritmos de machine learning entrenados con datos reales de misiones espaciales como Kepler, TESS y K2',
-  overline = 'Tecnología Inteligente',
+  title = 'How Does Prediction Work?',
+  subtitle = 'Our system uses machine learning algorithms trained with real data from space missions such as Kepler, TESS, and K2',
+  overline = 'Intelligent Technology',
   steps = predictionSteps,
 }) => {
+
   // Mapeo de iconos - EDITA aquí para cambiar iconos
   const iconMap: Record<string, React.ReactNode> = {
     '01': <Database size={32} />,

@@ -21,7 +21,7 @@ interface VisualizationProps {
   subtitle?: string;
   overline?: string;
   stats?: VisualizationStat[];
-  onExploreClick?: () => void;
+  
 }
 
 // ============================================
@@ -30,12 +30,13 @@ interface VisualizationProps {
 // ============================================
 
 const Visualization: React.FC<VisualizationProps> = ({
-  title = 'Mapa Estelar Interactivo',
-  subtitle = 'Visualiza los exoplanetas descubiertos en una representación interactiva del cosmos',
-  overline = 'Exploración Visual',
+  title = 'Interactive Star Map',
+  subtitle = 'Visualize the discovered exoplanets in an interactive representation of the cosmos',
+  overline = 'Visual Exploration',
   stats = visualizationStats,
-  onExploreClick,
+  
 }) => {
+
   const [showIframe, setShowIframe] = useState(false);
   const handleExploreClick = () => {
     setShowIframe(true);
@@ -109,10 +110,10 @@ const Visualization: React.FC<VisualizationProps> = ({
             <Box sx={{ textAlign: 'center', zIndex: 1 }}>
               <Telescope size={64} color="#6366f1" style={{ marginBottom: 16 }} />
               <Typography variant="h5" sx={{ mb: 2 }}>
-                Visualización Interactiva
+                Interactive Visualization
               </Typography>
               <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3 }}>
-                Aquí se mostrará un mapa 3D interactivo de los sistemas exoplanetarios
+                An interactive 3D map of exoplanetary systems will be displayed here.
               </Typography>
               <Button
                 variant="contained"
@@ -124,7 +125,7 @@ const Visualization: React.FC<VisualizationProps> = ({
                   '&:hover': { transform: 'scale(1.05)' },
                 }}
               >
-                Explorar en 3D
+                Explore in 3D
               </Button>
             </Box>
           ) : (

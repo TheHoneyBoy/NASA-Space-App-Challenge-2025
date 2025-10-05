@@ -24,14 +24,15 @@ interface HeroSectionProps {
 // ============================================
 
 const HeroSection: React.FC<HeroSectionProps> = ({
-  title = 'Explora el Universo de los\nExoplanetas con IA',
-  subtitle = 'Descubre mundos más allá de nuestro sistema solar usando el poder de la inteligencia artificial',
-  badgeText = 'HAWA HP - Más allá del cielo',
-  primaryButtonText = 'Empezar Exploración',
-  secondaryButtonText = 'Visualización Interactiva',
+  title = 'Explore the Universe of\nExoplanets with AI',
+  subtitle = 'Discover worlds beyond our solar system using the power of artificial intelligence',
+  badgeText = 'HAWA HP - Beyond the Sky',
+  primaryButtonText = 'Start Exploration',
+  secondaryButtonText = 'Interactive Visualization',
   onPrimaryClick,
   onSecondaryClick,
 }) => {
+
   const { scrollY } = useScroll();
   
   // Efectos parallax - EDITA rangos aquí para ajustar velocidad
