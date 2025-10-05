@@ -17,6 +17,7 @@ from langchain.prompts import ChatPromptTemplate, PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
 from langchain.retrievers.multi_query import MultiQueryRetriever
+from rest_framework.permissions import AllowAny
 
 from dotenv import load_dotenv
 import os
@@ -27,8 +28,10 @@ base_url_llm = os.getenv("BASE_URL_OPEN_ROUTER")
 os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
 
 # Create your views here.
-@method_decorator(csrf_exempt, name='dispatch')
+# @method_decorator(csrf_exempt, name='dispatch')
 class ChatbotViewSet(viewsets.ModelViewSet):
+    permission_classes = [AllowAny]
+
     serializer_class = ChatbotMessageSerializer  # Fixed: changed from serializer to serializer_class
 
     @action(detail=False, methods=['get'])
@@ -94,13 +97,13 @@ class ChatbotViewSet(viewsets.ModelViewSet):
             # Prompts
             QUERY_PROMPT = PromptTemplate(
                 input_variables=["question"],
-                template="""Eres un modelo de lenguaje de soporte. Tu tarea es dar pasos conforme
-                a las preguntas que haga un usuario desde documentos relevantes de una base de datos vectorizada. Tu objetivo
-                es es proporcionar estos pasos y ser una guia para el usuario
-                Original question: {question}"""
+                template="""You are a support language model. Your task is to 
+                provide step-by-step guidance based on the questions asked by a user, 
+                using relevant documents from a vectorized database. Your goal is to 
+                offer these steps and serve as a guide for the user.: {question}"""
             )
             
-            template = """Responde a la pregunta basado SOLO en el siguiente contexto:
+            template = """Answer the question based ONLY on the context below.:
             {context}
             Question: {question}
             """

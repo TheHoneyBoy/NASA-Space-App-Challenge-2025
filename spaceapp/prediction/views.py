@@ -3,6 +3,8 @@ from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import AllowAny
+
 import pandas as pd
 import json
 import joblib
@@ -13,8 +15,9 @@ from .serializers import PredictionSerializer, LogUserPredictSerializer
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
-@method_decorator(csrf_exempt, name='dispatch')
+# @method_decorator(csrf_exempt, name='dispatch')
 class PredictionViewSet(viewsets.ModelViewSet):
+    permission_classes = [AllowAny]
     queryset = LogUserPredict.objects.all()
     serializer_class = LogUserPredictSerializer
 
