@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'accounts',
     'prediction',
     'uploaddata',
-    'train'
+    'train',
+    'chatbot',
 ]
 
 MIDDLEWARE = [

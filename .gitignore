@@ -2,6 +2,7 @@
 venv/
 spaceapp/.env
 spaceapp/spaceappenv
+tempdata/
 
 # Ignore Python cache
 __pycache__/

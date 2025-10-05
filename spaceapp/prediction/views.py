@@ -53,10 +53,32 @@ class PredictionViewSet(viewsets.ModelViewSet):
                 )
             
             # Make predictions
-            print(csv_data_list)
-            predictions = model.predict(csv_data_list.values)  # Predicting only the first row for testing
-            print("prediction succesful xd")
-            print(predictions)
+            predictions = model.predict(csv_data_list.values)
+
+
+            # NEW: Get prediction probabilities and map to labels
+            # Get probabilities for each class
+            probabilities = model.predict_proba(csv_data_list.values)
+            
+            # Map numerical predictions to string labels
+            label_map = {
+                0: "FALSE POSITIVE",
+                1: "CANDIDATE", 
+                2: "CONFIRMED"
+            }
+            
+            # Prepare the response data using the index from csv_data_list
+            response_data = []
+            for i, (pred, prob) in enumerate(zip(predictions, probabilities)):
+                # Get the predicted class probability (max probability for the predicted class)
+                predicted_prob = prob[pred]  # Probability of the predicted class
+                
+                response_data.append({
+                    "name": str(csv_data_list.index[i]),  # Use the actual index from csv_data_list
+                    "prediction": label_map[pred],
+                    "probability": f"{predicted_prob:.2%}"  # Format as percentage with 2 decimal places
+                })
+            
             # # Calculate metrics
             # metrics = self.calculate_metrics(model, df, predictions)
             
@@ -72,20 +94,15 @@ class PredictionViewSet(viewsets.ModelViewSet):
             #     idModel=ml_model_instance  # This should now work
             # )
             
-            # # Prepare response
-            # response_data = {
-            #     'prediction_id': prediction_log.id,
-            #     'predictions': predictions.tolist(),
-            #     'metrics': metrics,
-            #     'result': result
-            # }
-            
-            response_data = {
-                'predictions': predictions.tolist(),
+            # Prepare response
+            response = {
+                'predictions': response_data,
+                'total_predictions': len(predictions),
                 'message': 'Prediction successful'  
             }
 
-            return Response(response_data, status=status.HTTP_200_OK)
+            return Response(response, status=status.HTTP_200_OK)
+            
         except Exception as e:
             return Response(
                 {"error": f"Prediction failed: {str(e)}"}, 
@@ -126,10 +143,10 @@ class PredictionViewSet(viewsets.ModelViewSet):
     def format_predictions(self, predictions):
         """Format predictions into a string result (max 45 chars)"""
         if len(predictions) == 1:
-            return str(predictions[0])[:45]
+            return str(predictions[0])
         else:
             unique_preds = np.unique(predictions)
             if len(unique_preds) == 1:
-                return f"All: {unique_preds[0]}"[:45]
+                return f"All: {unique_preds[0]}"
             else:
-                return f"{len(predictions)} predictions"[:45]
+                return f"{len(predictions)} predictions"

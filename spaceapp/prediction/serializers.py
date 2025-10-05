@@ -24,7 +24,8 @@ class PredictionSerializer(serializers.Serializer):
                 for chunk in value.chunks():
                     destination.write(chunk)
             
-            df = pd.read_csv(temp_file_path)
+            df = pd.read_csv(temp_file_path, index_col="kepler_name")
+            df = df.rename(lambda x: "No name registered" if pd.isna(x) else x)
         except Exception as e:
             raise serializers.ValidationError(f"Invalid CSV file: {str(e)}")
         return df
