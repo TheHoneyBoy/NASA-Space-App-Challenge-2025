@@ -150,6 +150,28 @@ export const predictionSteps: PredictionStep[] = [
   },
 ];
 
+// Dashboard menu
+export const DashboardContent = [
+  {
+    step: '01',
+    title: 'Analytics',
+    desc: 'Visualize and analyze models results interactively.',
+    link: 'analytics',
+  },
+  {
+    step: '02',
+    title: 'Batch Prediction',
+    desc: 'Make predictions of data from Kepler, TESS and K2 missions powered by AI.',
+    link: 'predictions',
+  },
+  {
+    step: '03',
+    title: 'Model Training',
+    desc: 'Train and download your own model.',
+    link: 'training',
+  },
+];
+
 // Visualization Data
 export const visualizationStats: VisualizationStat[] = [
   { label: 'Stellar Systems', value: '4,123' },

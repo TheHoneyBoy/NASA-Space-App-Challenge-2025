@@ -1,54 +1,124 @@
-import { useState } from 'react';
-import { loginUser } from '../services/authService';
-import type { LoginData } from '../services/authService';
+import React, { useState } from "react";
+import { Box, Card, Typography, TextField, Button, ThemeProvider, createTheme } from "@mui/material";
+import { motion } from "framer-motion";
+import theme from "../themeGUEST";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
-  const [formData, setFormData] = useState<LoginData>({ email: '', password: '' });
-  const [error, setError] = useState<string | null>(null);
+const secondaryTheme = createTheme({
+  ...theme,
+  palette: {
+    ...theme.palette,
+    primary: theme.palette.secondary,
+  },
+});
+
+const Login: React.FC = () => {
+  const navigate = useNavigate(); // <-- dentro del componente
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      const res = await loginUser(formData);
-      console.log('Inicio de sesión exitoso:', res);
-      // aquí podrías guardar el token en localStorage
-      // localStorage.setItem('token', res.token);
-    } catch (err) {
-      console.error('Error en login:', err);
-      setError('Credenciales incorrectas');
-    }
+  const handleLogin = () => {
+    setLoading(true);
+    setTimeout(() => {
+      navigate("/dashboardMenu"); // redirige al Dashboard
+    }, 300); // pequeña demora para animación de carga
   };
 
   return (
-    <div className="p-8 max-w-sm mx-auto">
-      <h2 className="text-xl font-bold mb-4">Iniciar Sesión</h2>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-        <input
-          type="text"
-          name="email"
-          placeholder="Usuario"
-          value={formData.email}
-          onChange={handleChange}
-          className="border p-2 rounded"
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Contraseña"
-          value={formData.password}
-          onChange={handleChange}
-          className="border p-2 rounded"
-        />
-        <button type="submit" className="bg-blue-600 text-white rounded p-2">
-          Iniciar Sesión
-        </button>
-        {error && <p className="text-red-600 text-sm">{error}</p>}
-      </form>
-    </div>
+    <ThemeProvider theme={secondaryTheme}>
+      <Box
+        sx={{
+          width: "100vw",
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          bgcolor: "#061224",
+          p: 2,
+        }}
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <Card
+            sx={{
+              p: 4,
+              width: 360,
+              bgcolor: "#0c1a33",
+              borderRadius: 3,
+              boxShadow: "0 8px 32px rgba(6,182,212,0.2)",
+            }}
+          >
+            <Typography
+              variant="h5"
+              sx={{ textAlign: "center", color: "#22d3ee", fontWeight: 700, mb: 3 }}
+            >
+              Iniciar Sesión
+            </Typography>
+
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+              <TextField
+                label="Usuario"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                variant="outlined"
+                size="small"
+                fullWidth
+                InputProps={{
+                  sx: {
+                    color: "#fff",
+                    "& .MuiOutlinedInput-notchedOutline": { borderColor: "#22d3ee" },
+                    "&:hover .MuiOutlinedInput-notchedOutline": { borderColor: "#06b6d4" },
+                  },
+                }}
+              />
+              <TextField
+                label="Contraseña"
+                name="password"
+                type="password"
+                value={formData.password}
+                onChange={handleChange}
+                variant="outlined"
+                size="small"
+                fullWidth
+                InputProps={{
+                  sx: {
+                    color: "#fff",
+                    "& .MuiOutlinedInput-notchedOutline": { borderColor: "#22d3ee" },
+                    "&:hover .MuiOutlinedInput-notchedOutline": { borderColor: "#06b6d4" },
+                  },
+                }}
+              />
+              <Button
+                onClick={handleLogin}
+                disabled={loading}
+                sx={{
+                  mt: 1,
+                  py: 1.25,
+                  background: "linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%)",
+                  color: "#fff",
+                  fontWeight: 600,
+                  boxShadow: "0 6px 24px rgba(6,182,212,0.3)",
+                  "&:hover": {
+                    boxShadow: "0 8px 32px rgba(6,182,212,0.5)",
+                    transform: "translateY(-2px)",
+                  },
+                }}
+              >
+                {loading ? "Cargando..." : "Iniciar Sesión"}
+              </Button>
+            </Box>
+          </Card>
+        </motion.div>
+      </Box>
+    </ThemeProvider>
   );
 };
 
