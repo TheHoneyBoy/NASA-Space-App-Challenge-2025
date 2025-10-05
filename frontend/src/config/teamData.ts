@@ -5,12 +5,19 @@ import type { TeamMember, TeamInfo } from '../types/team.types';
 // Edita aquí la información de cada desarrollador
 // ============================================
 
+import paul from '../assets/team/paul.jpeg';
+import naye from '../assets/team/naye.jpeg';
+import gian from '../assets/team/Gian.jpg';
+import jady from '../assets/team/jady.jpeg';
+import edwin from '../assets/team/Edwin.jpeg';
+import yasu from '../assets/team/yasu.jpeg';
+
 export const teamMembers: TeamMember[] = [
   {
     id: 1,
     nombre: "Paul Andre Auccacusi Huanca", // EDITA: Nombre completo
-    rol: "Backend Developer", // EDITA: Rol en el proyecto
-    foto: "/assets/team/dev1.jpg", // EDITA: Ruta de la foto (coloca tus fotos en public/assets/team/)
+    rol: "Machine Learning Engineer & Backend Developer", // EDITA: Rol en el proyecto
+    foto: paul, // EDITA: Ruta de la foto (coloca tus fotos en public/assets/team/)
     
     // Información académica (FLEXIBLE)
     titulo: "Ingeniería Informática y de Sistemas", // EDITA: Para estudiantes: "Ingeniería de..." / Para egresados: "Ingeniero de..."
@@ -28,8 +35,8 @@ export const teamMembers: TeamMember[] = [
     id: 2,
     nombre: "Nahyely Alaniz Espinoza Colca", // EDITA
     rol: "UX/UI Designer & Frontend Developer", // EDITA
-    foto: "/assets/team/dev2.jpg", // EDITA
-    titulo: "Ingeniería informática y de Sistemas", // Ejemplo de egresado
+    foto: naye, // EDITA
+    titulo: "Ingeniería Informática y de Sistemas", // Ejemplo de egresado
     estado: "Graduate", // Ejemplo de egresado
     universidad: "Universidad Nacional de San Antonio Abad del Cusco", // EDITA
     linkedin: "https://www.linkedin.com/in/nahyely-espinoza-147253323",
@@ -40,8 +47,8 @@ export const teamMembers: TeamMember[] = [
     id: 3,
     nombre: "Jadyra Ch'aska Choque Quispe", // EDITA
     rol: "Data Analyst", // EDITA
-    foto: "/assets/team/dev3.jpg", // EDITA
-    titulo: "Ingeniería informática y de Sistemas", // EDITA
+    foto: jady, // EDITA
+    titulo: "Ingeniería Informática y de Sistemas", // EDITA
     estado: "Graduate", // EDITA
     universidad: "Universidad Nacional de San Antonio Abad del Cusco", // EDITA
     linkedin: "https://www.linkedin.com/in/jadyra-ch-aska-choque-quispe-451858329",
@@ -50,21 +57,21 @@ export const teamMembers: TeamMember[] = [
   },
   {
     id: 4,
-    nombre: "Desarrollador Cuatro", // EDITA
-    rol: "Data Scientist", // EDITA
-    foto: "/assets/team/dev4.jpg", // EDITA
-    titulo: "Ingeniería de Sistemas", // EDITA
-    estado: "7mo Ciclo", // EDITA
+    nombre: "Edwin Alvarez Mamani", // EDITA
+    rol: "Developer Full-stack", // EDITA
+    foto: edwin, // EDITA
+    titulo: "Ingeniería Informática y de Sistemas", // EDITA
+    estado: "Titulado", // EDITA
     universidad: "Universidad Nacional de San Antonio Abad del Cusco", // EDITA
-    linkedin: "https://linkedin.com/in/usuario4",
-    github: "https://github.com/usuario4",
+    linkedin: "https://www.linkedin.com/in/win7eam/",
+    github: "https://github.com/win7/",
     accentColor: "#ec4899" // Rosa
   },
   {
     id: 5,
     nombre: "Gian Franco Charalla Ccama", // EDITA
     rol: "UX/UI Designer & Frontend Developer", // EDITA
-    foto: "/assets/team/dev5.jpg", // EDITA
+    foto: gian, // EDITA
     titulo: "Ingeniería Informática y de Sistemas", // EDITA
     estado: "Student", // EDITA
     universidad: "Universidad Nacional de San Antonio Abad del Cusco", // EDITA
@@ -76,7 +83,7 @@ export const teamMembers: TeamMember[] = [
     id: 6,  
     nombre: "Yasumy Maricely Jallo Paccaya", // EDITA
     rol: "Data Scientist", // EDITA
-    foto: "/assets/team/dev6.jpg", // EDITA
+    foto: yasu, // EDITA
     titulo: "Ingeniería Informática y de Sistemas", // Ejemplo de egresada
     estado: "Student", // Ejemplo de egresada
     universidad: "Universidad Nacional de San Antonio Abad del Cusco", // EDITA
