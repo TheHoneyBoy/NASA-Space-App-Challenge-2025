@@ -131,7 +131,7 @@ const BatchPrediccion: React.FC = () => {
           AI EXOPLANET CLASSIFIER
         </Typography>
         <Typography variant="h3" sx={{ mt: 1, mb: 1 }}>
-          Batch Prediction Dashboard
+          Batch Prediction
         </Typography>
         <Typography variant="body1" sx={{ color: "text.secondary", maxWidth: 700, mx: "auto" }}>
           Select a trained model, upload your exoplanet dataset (.csv) and visualize predictions instantly.

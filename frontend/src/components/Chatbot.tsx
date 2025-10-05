@@ -4,6 +4,7 @@ import { Satellite, X, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import theme from "../themeGUEST";
 import { Send } from "lucide-react";
+import { sendMessageToChatbot } from "../services/chatbotServices"; // al inicio del archivo
 
 const cyanTheme = createTheme({
   ...theme,
@@ -28,19 +29,26 @@ const Chatbot: React.FC = () => {
   const [input, setInput] = useState("");
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-  const handleSend = () => {
-    if (!input.trim()) return;
-    const newMessage: Message = { sender: "user", text: input };
-    setMessages([...messages, newMessage]);
-    setInput("");
+const handleSend = async () => {
+  if (!input.trim()) return;
+  const newMessage: Message = { sender: "user", text: input };
+  setMessages((prev) => [...prev, newMessage]);
+  setInput("");
 
-    setTimeout(() => {
-      setMessages((prev) => [
-        ...prev,
-        { sender: "chaska", text: `✨ Chaska dice: Hola! Recibí tu mensaje: "${input}"` },
-      ]);
-    }, 800);
-  };
+  try {
+    const botResponse = await sendMessageToChatbot(input);
+    setMessages((prev) => [
+      ...prev,
+      { sender: "chaska", text: botResponse },
+    ]);
+  } catch (error) {
+    setMessages((prev) => [
+      ...prev,
+      { sender: "chaska", text: "❌ Error: No se pudo obtener respuesta del servidor." },
+    ]);
+  }
+};
+
 
   // Partículas estilo estrellitas
   useEffect(() => {

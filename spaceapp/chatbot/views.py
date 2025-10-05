@@ -34,7 +34,7 @@ class ChatbotViewSet(viewsets.ModelViewSet):
 
     serializer_class = ChatbotMessageSerializer  # Fixed: changed from serializer to serializer_class
 
-    @action(detail=False, methods=['get'])
+    @action(detail=False, methods=['post'])
     def conversation(self, request):
         try:
             serializer = ChatbotMessageSerializer(data=request.data)

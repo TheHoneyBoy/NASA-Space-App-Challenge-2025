@@ -55,7 +55,7 @@ const Home: React.FC = () => {
           rotationSpeed={0.1}
           repulsionStrength={2}
           autoCenterRepulsion={0}
-          starSpeed={0.3}
+          starSpeed={0.5}
         />
       </Box>
 
@@ -74,22 +74,55 @@ const Home: React.FC = () => {
           Beyond Hanan Pacha,<br />
           new worlds await...
         </Typography>
-        <Box sx={{ mt: 4, display: 'flex', gap: 2, justifyContent: 'center' }}>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => navigate('/info')}
-          >
-            Explore as Guest
-          </Button>
-          <Button
-            variant="outlined"
-            color="primary"
-            onClick={() => navigate('/login')}
-          >
-            Explore with Account
-          </Button>
-        </Box>
+<Box sx={{ mt: 4, display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
+  {/* Botón principal con fondo blanco */}
+  <Button
+    onClick={() => navigate('/info')}
+    sx={{
+      py: 1.25,
+      px: 3,
+      background: "linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%)",
+      color: "#061224",
+      fontWeight: 600,
+      boxShadow: "0 6px 24px rgba(0,0,0,0.15)",
+      borderRadius: 2,
+      "&:hover": {
+        boxShadow: "0 8px 32px rgba(0,0,0,0.25)",
+        transform: "translateY(-2px)",
+        background: "linear-gradient(135deg, #f0f0f0 0%, #ffffff 100%)",
+      },
+      transition: "all 0.3s ease",
+    }}
+  >
+    Explore as Guest
+  </Button>
+
+  {/* Botón transparente con borde, hover blanco */}
+  <Button
+    onClick={() => navigate('/login')}
+    sx={{
+      py: 1.25,
+      px: 3,
+      background: "transparent",
+      color: "#ffffff",
+      fontWeight: 600,
+      border: "2px solid #ffffff",
+      borderRadius: 2,
+      boxShadow: "0 6px 24px rgba(255,255,255,0.1)",
+      "&:hover": {
+        boxShadow: "0 8px 32px rgba(255,255,255,0.25)",
+        transform: "translateY(-2px)",
+        border: "2px solid #ffffff", // Borde cambia a blanco al hacer hover
+      },
+      transition: "all 0.3s ease",
+    }}
+  >
+    Explore with Account
+  </Button>
+</Box>
+
+
+
       </Box>
     </Box>
   );

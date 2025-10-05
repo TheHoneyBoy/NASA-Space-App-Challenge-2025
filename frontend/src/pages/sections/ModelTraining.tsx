@@ -89,7 +89,7 @@ const ModelTraining: React.FC = () => {
             AI EXOPLANET CLASSIFIER
           </Typography>
           <Typography variant="h3" sx={{ mt: 1, mb: 1 }}>
-            Model Training Dashboard
+            Model Training
           </Typography>
           <Typography
             variant="body1"
