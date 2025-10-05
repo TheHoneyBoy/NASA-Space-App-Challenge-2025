@@ -2,10 +2,11 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
-import Dashboard from '../pages/Dashboard/Dashboard.tsx';
 import GuestLanding from '../pages/GuestLanding';
 import TeamPage from '../pages/TeamPage';
-
+import DashboardMenu from '../pages/DashboardMenu';
+import BatchPrediccion from '../pages/sections/BatchPrediction.tsx';
+import ModelTraining from '../pages/sections/ModelTraining.tsx';
 
 const AppRoutes: React.FC = () => (
   <Routes>
@@ -20,7 +21,11 @@ const AppRoutes: React.FC = () => (
     {/* Rutas existentes */}
     
     <Route path="/login" element={<Login />} />
-    <Route path="/dashboard" element={<Dashboard />} />
+    <Route path="/dashboardMenu" element={<DashboardMenu />}>
+      {/* Subruta de predicciones */}
+      <Route path="predictions" element={<BatchPrediccion />} />
+      <Route path="training" element={<ModelTraining />} />
+    </Route>
   </Routes>
 );
 
