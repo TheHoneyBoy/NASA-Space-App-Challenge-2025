@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Galaxy from "../components/Galaxy";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LockIcon from '@mui/icons-material/Lock';
+import LogoHawaHP from '../assets/Logo-HawaHP.png';
 
 const secondaryTheme = createTheme({
   ...theme,
@@ -18,7 +19,7 @@ const secondaryTheme = createTheme({
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [formData, setFormData] = useState({ email: "user@example.com", password: "123456" });
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,6 +33,20 @@ const Login: React.FC = () => {
 
   return (
     <ThemeProvider theme={secondaryTheme}>
+            {/* logo*/}
+            <Box
+              component="img"
+              src={LogoHawaHP}
+              alt="Logo HawaHP"
+              sx={{
+                position: 'absolute',
+                top: 24,
+                left: 24,
+                width: 160,
+                height: 'auto',
+                zIndex: 2,
+              }}
+            />
       <Box
         sx={{
           width: "100vw",
