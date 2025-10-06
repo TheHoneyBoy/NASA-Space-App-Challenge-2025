@@ -95,5 +95,3 @@ BASE_URL_OPEN_ROUTER=<base-url>
 ```
 
 ---
-
-✅ You’re all set! Run both servers (frontend and backend), and your NASA Space App Challenge 2025 environment will be ready to explore!
