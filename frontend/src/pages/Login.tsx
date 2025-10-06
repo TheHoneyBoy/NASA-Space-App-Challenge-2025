@@ -8,7 +8,7 @@ import Galaxy from "../components/Galaxy";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LockIcon from '@mui/icons-material/Lock';
 import LogoHawaHP from '../assets/Logo-HawaHP.png';
-
+// por pruebas
 const secondaryTheme = createTheme({
   ...theme,
   palette: {
