@@ -130,7 +130,7 @@ const handleSend = async () => {
             <Box sx={{ p: 2, display: "flex", justifyContent: "space-between", alignItems: "center", bgcolor: "#061224", zIndex: 1, position: "relative" }}>
               <Typography variant="subtitle1" sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                 <Sparkles size={20} color="#ffffffff"/>
-                Chaska Agent <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 1 }}>
+                Chaska Assistant <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 1 }}>
                 </motion.div>
               </Typography>
               <IconButton size="small" onClick={() => setOpen(false)} sx={{ color: "#fff" }}>
