@@ -7,6 +7,7 @@ import TeamPage from '../pages/TeamPage';
 import DashboardMenu from '../pages/DashboardMenu';
 import BatchPrediccion from '../pages/sections/BatchPrediction.tsx';
 import ModelTraining from '../pages/sections/ModelTraining.tsx';
+import Analytics from '../pages/sections/Analytics.tsx';
 
 const AppRoutes: React.FC = () => (
   <Routes>
@@ -23,6 +24,7 @@ const AppRoutes: React.FC = () => (
     <Route path="/login" element={<Login />} />
     <Route path="/dashboardMenu" element={<DashboardMenu />}>
       {/* Subruta de predicciones */}
+      <Route path="analytics" element={<Analytics />} />
       <Route path="predictions" element={<BatchPrediccion />} />
       <Route path="training" element={<ModelTraining />} />
     </Route>

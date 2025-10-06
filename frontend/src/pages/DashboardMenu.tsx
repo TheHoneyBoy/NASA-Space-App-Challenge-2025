@@ -11,11 +11,12 @@ import {
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { Database, Brain, BarChart3, TrendingUp } from 'lucide-react';
-import { useNavigate, useLocation, Outlet } from 'react-router-dom'; // ✅ Importar useLocation
+import { useNavigate, useLocation, Outlet } from 'react-router-dom';
 import { DashboardContent } from '../config/mockData.ts';
 import LogoHawaHP from '../assets/Logo-HawaHP.png';
+import Planet from '../assets/planet.png'; // 🔹 importa tu imagen completa del planeta
 import theme from '../themeGUEST.ts';
-import Chatbot from '../components/Chatbot'; 
+import Chatbot from '../components/Chatbot';
 
 // ============================================
 // INTERFACES
@@ -47,8 +48,9 @@ const DashboardMenu: React.FC<DashboardMenuProps> = ({
   const location = useLocation();
 
   // 🔹 Determina si estamos en una subruta
-  const isSubRoute = location.pathname !== '/dashboardMenu' && location.pathname !== '/dashboardMenu/';
-
+  const isSubRoute =
+    location.pathname !== '/dashboardMenu' &&
+    location.pathname !== '/dashboardMenu/';
 
   // 🔹 Crear versión secundaria del tema
   const secondaryTheme = createTheme({
@@ -77,6 +79,8 @@ const DashboardMenu: React.FC<DashboardMenuProps> = ({
           height: 'auto',
           py: 12,
           px: { xs: 2, sm: 6, md: 10 },
+          position: 'relative', // ✅ necesario para el posicionamiento absoluto del planeta
+          overflow: 'hidden', // ✅ evita que se desborde el planeta
           backgroundImage: `radial-gradient(circle at bottom, #1c3b82ff 0%, #1a1a1a 100%)`,
         }}
       >
@@ -236,6 +240,23 @@ const DashboardMenu: React.FC<DashboardMenuProps> = ({
           <Outlet />
         )}
         <Chatbot />
+        {/* Imagen del planeta (mitad superior, al fondo) */}
+<Box
+  component="img"
+  src={Planet}
+  alt="Planeta decorativo"
+  sx={{
+    position: "fixed",   // 🔹 Fijo a la ventana
+    bottom: 0,           // 🔹 Pegado al borde inferior
+    left: "50%",
+    transform: "translateX(-50%)",
+    width: "100%",
+    maxWidth: 900,       // ajusta el tamaño del planeta
+    opacity: 0.35,       // un poco transparente
+    zIndex: 0,           // 🔹 Debajo de todo el contenido
+    pointerEvents: "none", // no interfiere con clics
+  }}
+/>
       </Container>
     </ThemeProvider>
   );
